@@ -1,3 +1,5 @@
+![logo](https://raw.githubusercontent.com/anggaaryas/auto_step/master/logo.png)
+
 # Auto Step for Flutter
 
 Auto Step is a Flutter widget that facilitates the animation of components by automatically stepping through a sequence of values. It is particularly useful for creating animations or transitions within your Flutter applications.
