@@ -1,39 +1,55 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Auto Step for Flutter
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+Auto Step is a Flutter widget that facilitates the animation of components by automatically stepping through a sequence of values. It is particularly useful for creating animations or transitions within your Flutter applications.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+![preview](https://raw.githubusercontent.com/anggaaryas/auto_step/master/screenshoots/ss1.gif)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+## AutoStep Widget
+### Usage
 
 ```dart
-const like = 'sample';
+AutoStep(
+  total: 3,
+  duration: Duration(milliseconds: 1000),
+  builder: (step) => AnimatedContainer(
+              duration: Duration(milliseconds: 500),
+              width: 100.0 * step,
+              height: 100,
+              color: Colors.green,)
+)
 ```
 
-## Additional information
+### Parameters
+- `total`: The total number of steps in the sequence.
+- `duration`: The duration for each step in the sequence.
+- `builder`: A function that builds the UI for each step based on the current step index.
+- `loop`: (Optional) Indicates whether the sequence should loop back to the beginning after reaching the last step. Default is `true`.
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+
+## AutoStepSwitch Widget
+### Usage
+
+```dart
+AutoStepSwitch(
+  duration: Duration(milliseconds: 3000),
+  builder: (step) => AnimatedAlign(
+      alignment: step
+          ? Alignment.centerLeft
+          : Alignment.centerRight,
+      duration: Duration(milliseconds: 2000),
+      child: Container(
+          width: 64,
+          height: 64,
+          decoration: BoxDecoration(
+              shape: BoxShape.circle, 
+              color: Colors.red
+          ),
+      ),
+  )
+)
+```
+
+### Parameters
+- `duration`: The duration for each step in the sequence.
+- `builder`: A function that builds the UI for each step based on the current step status (true/false).
+- `loop`: (Optional) Indicates whether the sequence should loop back to the beginning after reaching the last step. Default is `true`.
