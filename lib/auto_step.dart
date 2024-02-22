@@ -2,6 +2,7 @@ library auto_step;
 
 import 'package:flutter/material.dart';
 export 'auto_step_switch.dart';
+export 'auto_step_values.dart';
 
 class AutoStep extends StatefulWidget {
   const AutoStep(

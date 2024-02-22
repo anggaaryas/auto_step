@@ -48,10 +48,10 @@ class _MyHomePageState extends State<MyHomePage>
           Center(
             child: AutoStep(
                 total: 3,
-                duration: Duration(milliseconds: 1000),
+                duration: const Duration(milliseconds: 1000),
                 builder: (step) {
                   return AnimatedContainer(
-                    duration: Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 500),
                     width: 100.0 * step,
                     height: 100,
                     color: Colors.green,
@@ -64,16 +64,16 @@ class _MyHomePageState extends State<MyHomePage>
               child: Stack(
                 children: [
                   AutoStepSwitch(
-                      duration: Duration(milliseconds: 3000),
+                      duration: const Duration(milliseconds: 3000),
                       builder: (step) => AnimatedAlign(
                             alignment: step
                                 ? Alignment.centerLeft
                                 : Alignment.centerRight,
-                            duration: Duration(milliseconds: 2000),
+                            duration: const Duration(milliseconds: 2000),
                             child: Container(
                               width: 64,
                               height: 64,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   shape: BoxShape.circle, color: Colors.red),
                             ),
                           ))
@@ -85,32 +85,67 @@ class _MyHomePageState extends State<MyHomePage>
             child: SizedBox(
               height: 300,
               child: AutoStep(
-                total: 3,
-                duration: Duration(milliseconds: 750),
-                builder: (step) {
-                  tabController.animateTo(step-1);
-                  return Column(
-                    children: [
-                      TabBar(controller: tabController, tabs: [
-                        Tab(
-                          text: "One",
-                        ),
-                        Tab(
-                          text: "Two",
-                        ),
-                        Tab(
-                          text: "Three",
-                        ),
-                      ]),
-                      Expanded(
-                          child: TabBarView(controller: tabController, children: [
-                        Center(child: Text("Page One")),
-                        Center(child: Text("Page Two")),
-                        Center(child: Text("Page Three")),
-                      ]))
-                    ],
-                  );
-                }
+                  total: 3,
+                  duration: const Duration(milliseconds: 750),
+                  builder: (step) {
+                    tabController.animateTo(step - 1);
+                    return Column(
+                      children: [
+                        TabBar(controller: tabController, tabs: [
+                          const Tab(
+                            text: "One",
+                          ),
+                          const Tab(
+                            text: "Two",
+                          ),
+                          const Tab(
+                            text: "Three",
+                          ),
+                        ]),
+                        Expanded(
+                            child: TabBarView(
+                                controller: tabController,
+                                children: [
+                              const Center(child: Text("Page One")),
+                              const Center(child: Text("Page Two")),
+                              const Center(child: Text("Page Three")),
+                            ]))
+                      ],
+                    );
+                  }),
+            ),
+          ),
+          Center(
+            child: AutoStepValues<BoxDecoration>(
+              values:  [
+                BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: Colors.red
+                ),
+
+                const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.green
+                ),
+
+                const BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: Colors.blue
+                ),
+
+                BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                  border: Border.all(color: Colors.black)
+                ),
+
+              ],
+              duration: List.generate(4, (index) => const Duration(milliseconds: 1000)),
+              builder: (step) => AnimatedContainer(
+                duration: const Duration(milliseconds: 500),
+                decoration: step,
+                width: 100,
+                height: 100,
               ),
             ),
           )
