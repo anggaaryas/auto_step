@@ -1,4 +1,5 @@
 import 'package:auto_step/auto_step.dart';
+import 'package:auto_step/loop_mode.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -87,28 +88,29 @@ class _MyHomePageState extends State<MyHomePage>
               child: AutoStep(
                   total: 3,
                   duration: const Duration(milliseconds: 750),
+                  loopMode: const AutoStepReverseLoop(),
                   builder: (step) {
                     tabController.animateTo(step - 1);
                     return Column(
                       children: [
-                        TabBar(controller: tabController, tabs: [
-                          const Tab(
+                        TabBar(controller: tabController, tabs: const [
+                          Tab(
                             text: "One",
                           ),
-                          const Tab(
+                          Tab(
                             text: "Two",
                           ),
-                          const Tab(
+                          Tab(
                             text: "Three",
                           ),
                         ]),
                         Expanded(
                             child: TabBarView(
                                 controller: tabController,
-                                children: [
-                              const Center(child: Text("Page One")),
-                              const Center(child: Text("Page Two")),
-                              const Center(child: Text("Page Three")),
+                                children: const [
+                              Center(child: Text("Page One")),
+                              Center(child: Text("Page Two")),
+                              Center(child: Text("Page Three")),
                             ]))
                       ],
                     );

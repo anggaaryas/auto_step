@@ -1,13 +1,14 @@
 library auto_step;
 
+import 'package:auto_step/loop_mode.dart';
 import 'package:flutter/material.dart';
 
 class AutoStepSwitch extends StatefulWidget {
   const AutoStepSwitch(
-      {super.key, required this.duration, required this.builder, this.loop = true,});
+      {super.key, required this.duration, required this.builder, this.loop = const AutoStepLoop(),});
 
   final Duration duration;
-  final bool loop;
+  final AutoStepLoop loop;
   final Widget Function(bool step) builder;
 
   @override
@@ -17,6 +18,7 @@ class AutoStepSwitch extends StatefulWidget {
 class _AutoStepSwitchState extends State<AutoStepSwitch> {
 
   bool step = false;
+  int? count;
 
   @override
   void initState() {
@@ -31,8 +33,23 @@ class _AutoStepSwitchState extends State<AutoStepSwitch> {
         step = !step;
       });
 
-      if(step && widget.loop){
-        stepping();
+      if(step){
+        if(widget.loop.count == null || widget.loop.count != 0) {
+          if(widget.loop.count == null){
+            stepping();
+          } else {
+            if(count == null){
+              count = 1;
+            } else {
+              count = count! + 1;
+            }
+
+            if(widget.loop.count != count){
+
+              stepping();
+            }
+          }
+        }
       } else {
         stepping();
       }
