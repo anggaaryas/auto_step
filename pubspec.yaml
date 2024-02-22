@@ -1,7 +1,8 @@
 name: auto_step
-description: "Auto Step for Flutter. Useful for animating somethingz"
+description: "Auto Step is a Flutter widget that facilitates the animation of components by automatically stepping through a sequence of values. It is particularly useful for creating animations or transitions within your Flutter applications."
 version: 0.0.2
 homepage: https://github.com/anggaaryas/auto_step
+topics: [animation]
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
