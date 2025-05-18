@@ -1,3 +1,8 @@
+## 0.0.3
+
+* Fix! : fix `context` related issue
+* Chore! : update documentation
+
 ## 0.0.2
 
 * downgrade Dart SDK to 3.0.0
